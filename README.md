@@ -1,10 +1,9 @@
 Easy-PHP-Mapping
 ================
 
-PHP Mapping engine
--------------------
-This engine is a basic php file that
-includes instances of a mapping template
-with blocked tiles. Its a older project
-and will be refreshed soon for a Browsergame
-Project.
+PHP Kartenklasse
+----------------------
+Diese Kartenklasse ermöglicht es eine virtuelle Block-Karte
+zu erstellen, Charaktere zu bewegen und Kartenblöcke (Tiles)
+zu bearbeiten. Die Grundform ist eines meiner ersten Programme
+und wird momentan wieder aufgefrischt für andere Zwecke. 
