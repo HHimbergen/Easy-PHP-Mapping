@@ -1,0 +1,27 @@
+    body {
+    background: #dadada; }
+    #tile {
+    background: green; 
+    width: 40px;
+    border: 1px grey solid; 
+    border-right: none; 
+    height: 40px; 
+    float: left; }
+    #tilex {
+    background: red; 
+    width: 39px;
+    border: 1px black solid; 
+    height: 40px; 
+    float: left; }
+    #clearer {
+    clear: both; }
+    #block {
+    width: 39px;
+    border: 1px black solid; 
+    height: 40px; 
+    float: left;
+    background: black; }
+    #game {
+    float: left; }
+    #editor {
+    float: right; }
