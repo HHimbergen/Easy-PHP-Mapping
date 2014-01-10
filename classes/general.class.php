@@ -1,8 +1,12 @@
 <?php
 class General {
     private $mapsize;
-     
-    public function __construct($mapsize, $plcoord) {
+    
+    /**
+     * Konstuiert das Karten-Objekt
+     * Initialisiert Grundlegende Aktionen.
+     */
+    public function __construct($mapsize) {
         session_start();
         self::startInit($mapsize);
     }
@@ -17,6 +21,45 @@ class General {
         self::proofCurrentPos();
         self::setMapsize($tilerad);
         self::setCurrentPos(1, 1);
+    }
+    
+    /**
+     * Initialisiert die Karte mit Flächengröße
+     * (a*b)
+     * @return Map-Template
+     * @author Dennis Heinrich 
+     */
+    public function showMap() {
+        $rows = 1;
+        $tile = 1;
+        for($fields=$tile; $fields <= ($this->mapsize); $fields++) {
+            if($rows<=($this->mapsize-1) && $fields==($this->mapsize)) {
+                $rows++;
+                $fields=0;
+                self::showTile();
+                self::newTileRow();
+            } else {
+                self::showTile();
+            }
+        }
+    }
+    
+    /**
+     * Erstellt eine neue Zeile auf der Map
+     * @return Map-Element
+     * @author Dennis Heinrich
+     */
+    private function newTileRow() {
+        echo '<div id="clearer"></div>';
+    }
+    
+    /**
+     * Zeigt eine Fliese auf der Map an.
+     * @return Map-Element
+     * @author Dennis Heinrich
+     */
+    private function showTile() {
+        echo '<div id="tile"></div>';
     }
     
     /**
@@ -89,6 +132,16 @@ class General {
         }
     }
     
+    /**
+     * Legt die aktuelle Position fest, Admin und
+     * Playerbewegung nach Bewegungsmuster.<br>
+     * Admin - Jede Koordinate möglich<br>
+     * Player - Nur Bewegungsmuster
+     * @param int $x X-Koordinate
+     * @param int $y Y-Koordinate
+     * @param int $typ Bewegungstyp
+     * @author Dennis Heinrich
+     */
     private function setCurrentPos($x, $y, $typ=1) {
         if($typ==1) {
             if(self::onlyTileWalk($_SESSION['position'], 2)) {

@@ -8,7 +8,8 @@
             <?php
                 error_reporting(0);
                 Include("classes/general.class.php");
-                $gen = new General(20, 20); 
+                $gen = new General(6); 
+                $gen->showMap();
             ?>
         </div>        
     </body>
