@@ -36,10 +36,10 @@ class General {
             if($rows<=($this->mapsize-1) && $fields==($this->mapsize)) {
                 $rows++;
                 $fields=0;
-                self::showTile();
+                self::showTile($tile, $rows, 1);
                 self::newTileRow();
             } else {
-                self::showTile();
+                self::showTile($tile, $rows);
             }
         }
     }
@@ -58,8 +58,9 @@ class General {
      * @return Map-Element
      * @author Dennis Heinrich
      */
-    private function showTile() {
-        echo '<div id="tile"></div>';
+    private function showTile($y, $x, $last=0) {
+            echo '<div id="tile"></div>';
+        
     }
     
     /**
@@ -87,11 +88,10 @@ class General {
      *  @author Dennis Heinrich
      */
     private function proofCurrentPos() {
-        if(self::getCurrentPos()!==null) {
-            self::setCurrentPos(1, 1);
-        } else {
-            self::setCurrentPos($_GET['position']);
-        }
+        self::setCurrentPos(1, 1);
+        
+        self::setCurrentPos($_GET['position']);
+        
     }
     
     /**
@@ -143,13 +143,9 @@ class General {
      * @author Dennis Heinrich
      */
     private function setCurrentPos($x, $y, $typ=1) {
-        if($typ==1) {
             if(self::onlyTileWalk($_SESSION['position'], 2)) {
                 $_SESSION['position'] = $x."|".$y;
             }
-        } else {
-            
-        }
     }
 
 }
